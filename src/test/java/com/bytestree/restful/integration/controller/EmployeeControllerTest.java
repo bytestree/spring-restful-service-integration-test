@@ -48,9 +48,7 @@ public class EmployeeControllerTest {
 		Employee employee = new Employee("bytes", "tree", "developer", 12000);
 
 		// execute
-		ResponseEntity<Employee> responseEntity = restTemplate.postForEntity(URL, 
-																employee, 
-																Employee.class);
+		ResponseEntity<Employee> responseEntity = restTemplate.postForEntity(URL, employee, Employee.class);
 
 		// collect Response
 		int status = responseEntity.getStatusCodeValue();
@@ -72,9 +70,7 @@ public class EmployeeControllerTest {
 		// be retrieved here
 
 		// execute
-		ResponseEntity<Employee> responseEntity = restTemplate.getForEntity(URL + "{id}", 
-															Employee.class, 
-															new Long(1));
+		ResponseEntity<Employee> responseEntity = restTemplate.getForEntity(URL + "{id}", Employee.class, new Long(1));
 
 		// collect response
 		int status = responseEntity.getStatusCodeValue();
@@ -95,10 +91,8 @@ public class EmployeeControllerTest {
 		// Not Required as employee Not Exist scenario
 
 		// execute
-		ResponseEntity<Employee> responseEntity = 
-										restTemplate.getForEntity(URL + "{id}", 
-														Employee.class,
-														new Long(100));
+		ResponseEntity<Employee> responseEntity = restTemplate.getForEntity(URL + "{id}", Employee.class,
+				new Long(100));
 
 		// collect response
 		int status = responseEntity.getStatusCodeValue();
@@ -117,9 +111,7 @@ public class EmployeeControllerTest {
 		// fetched by this Restful web service call
 
 		// execute
-		ResponseEntity<List> responseEntity = 
-												restTemplate.getForEntity(URL,
-																	List.class);
+		ResponseEntity<List> responseEntity = restTemplate.getForEntity(URL, List.class);
 
 		// collect response
 		int status = responseEntity.getStatusCodeValue();
@@ -142,11 +134,8 @@ public class EmployeeControllerTest {
 		// execute - delete the record added while initializing database with
 		// test data
 
-		ResponseEntity<Void> responseEntity = restTemplate.exchange(URL + "{id}", 
-															HttpMethod.DELETE, 
-															null, 
-															Void.class,
-															new Long(1));
+		ResponseEntity<Void> responseEntity = restTemplate.exchange(URL + "{id}", HttpMethod.DELETE, null, Void.class,
+				new Long(1));
 
 		// verify
 		int status = responseEntity.getStatusCodeValue();
@@ -163,10 +152,7 @@ public class EmployeeControllerTest {
 		HttpEntity<Employee> requestEntity = new HttpEntity<Employee>(employee);
 
 		// execute
-		ResponseEntity<Void> responseEntity = restTemplate.exchange(URL, 
-															HttpMethod.PUT, 
-															requestEntity, 
-															Void.class);
+		ResponseEntity<Void> responseEntity = restTemplate.exchange(URL, HttpMethod.PUT, requestEntity, Void.class);
 
 		// verify
 		int status = responseEntity.getStatusCodeValue();
